@@ -1,6 +1,7 @@
 package by.kuchinsky.alexandr.mangofit;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+import by.kuchinsky.alexandr.mangofit.Common.Common;
 import by.kuchinsky.alexandr.mangofit.Model.User;
 
 public class SignIn extends AppCompatActivity {
@@ -73,8 +75,15 @@ Button btnSignIn;
 
 
                         if (user.getPassword().equals(edtPass.getText().toString())){
-                            Toast.makeText(SignIn.this, "log in success, bro", Toast.LENGTH_SHORT).show();
-                        }
+                            Intent home = new Intent(SignIn.this, Home.class);
+                            Common.currentUser = user;
+                            startActivity(home);
+                            finish();
+
+
+
+
+                             }
                         else
                         {
                             Toast.makeText(SignIn.this, "Неверный пароль:(", Toast.LENGTH_SHORT).show();

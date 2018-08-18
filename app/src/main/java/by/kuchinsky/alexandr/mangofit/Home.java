@@ -69,8 +69,8 @@ RecyclerView.LayoutManager layoutManager;
 
         // imma set name for current user heree.
         View headerView = navigationView.getHeaderView(0);
-        txtFullName=(TextView)findViewById(R.id.txtFullName);
-        txtFullName.setText(Common.currentUser.getName());
+        txtFullName=(TextView)headerView.findViewById(R.id.txtFullName);
+        txtFullName.setText("Здравствуйте, "+Common.currentUser.getName()+"!");
 
         //Load menu
         recycler_menu=(RecyclerView)findViewById(R.id.recyclerMenu);
@@ -120,15 +120,7 @@ RecyclerView.LayoutManager layoutManager;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }

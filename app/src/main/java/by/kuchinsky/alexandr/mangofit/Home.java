@@ -1,5 +1,6 @@
 package by.kuchinsky.alexandr.mangofit;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -34,7 +35,7 @@ DatabaseReference category;
 TextView txtFullName;
 RecyclerView recycler_menu;
 RecyclerView.LayoutManager layoutManager;
-
+    FirebaseRecyclerAdapter<Category, MenuViewHolder> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +84,7 @@ RecyclerView.LayoutManager layoutManager;
     }
 
     private void loadMenu() {
-        FirebaseRecyclerAdapter<Category, MenuViewHolder> adapter = new FirebaseRecyclerAdapter<Category, MenuViewHolder>(Category.class, R.layout.menu_item,MenuViewHolder.class,category) {
+    adapter = new FirebaseRecyclerAdapter<Category, MenuViewHolder>(Category.class, R.layout.menu_item,MenuViewHolder.class,category) {
             @Override
             protected void populateViewHolder(MenuViewHolder viewHolder, Category model, int position) {
                 viewHolder.txtMenuName.setText(model.getName());
@@ -92,7 +93,15 @@ RecyclerView.LayoutManager layoutManager;
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
-                        Toast.makeText(Home.this, clickItem.getName().toString() + "Clicked", Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(Home.this, clickItem.getName().toString() + "Clicked", Toast.LENGTH_SHORT).show();
+                        // Get category id and send it to the next activity.
+
+                        Intent serviceList = new Intent(Home.this, ServiceList.class);
+
+                        //CategoryId u nas key => putim chisto key itema
+
+                        serviceList.putExtra("CategoryID", adapter.getRef(position).getKey());
+                        startActivity(serviceList);
                     }
                 });
             }

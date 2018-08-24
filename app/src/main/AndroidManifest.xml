@@ -24,7 +24,8 @@
             android:name=".Home"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme" />
-        <activity android:name=".ServiceList"></activity>
+        <activity android:name=".ServiceList" />
+        <activity android:name=".ServiceDetail"></activity>
     </application>
 
 </manifest>

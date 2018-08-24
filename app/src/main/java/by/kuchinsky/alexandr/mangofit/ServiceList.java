@@ -1,5 +1,6 @@
 package by.kuchinsky.alexandr.mangofit;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -65,7 +66,11 @@ viewHolder.service_name.setText(model.getName());
                     viewHolder.setItemClickListener(new ItemClickListener() {
                         @Override
                         public void onClick(View view, int position, boolean isLongClick) {
-                            Toast.makeText(ServiceList.this, " "+local.getName(), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(ServiceList.this, " "+local.getName(), Toast.LENGTH_SHORT).show();
+                            Intent serviceDetail = new Intent(ServiceList.this, ServiceDetail.class);
+                            serviceDetail.putExtra("ServiceID", adapter.getRef(position).getKey()); // send service id to new activuty
+                            startActivity(serviceDetail);
+
                         }
                     });
             }

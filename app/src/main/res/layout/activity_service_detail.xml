@@ -177,7 +177,7 @@
 
     <Button
         android:textColor="@android:color/white"
-        android:id="@+id/zakazat"
+        android:id="@+id/btnBron"
         android:text="Оставить заявку"
         android:background="@color/colorAccent"
         android:layout_width="200dp"

@@ -67,11 +67,7 @@ Button btnSignIn;
                             mDialog.dismiss();
 
                              User user = dataSnapshot.child(edtPhone.getText().toString()).getValue(User.class);
-
-
-
-
-
+                             user.setPhone(edtPhone.getText().toString());  //settim nomer telefona dlya usera
 
 
                         if (user.getPassword().equals(edtPass.getText().toString())){
@@ -79,9 +75,6 @@ Button btnSignIn;
                             Common.currentUser = user;
                             startActivity(home);
                             finish();
-
-
-
 
                              }
                         else

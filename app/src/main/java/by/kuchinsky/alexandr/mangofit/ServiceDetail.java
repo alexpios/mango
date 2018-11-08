@@ -4,8 +4,11 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.google.firebase.database.DataSnapshot;
@@ -15,18 +18,20 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import by.kuchinsky.alexandr.mangofit.Database.Database;
+import by.kuchinsky.alexandr.mangofit.Model.Order;
 import by.kuchinsky.alexandr.mangofit.Model.Service;
 
 public class ServiceDetail extends AppCompatActivity {
 TextView service_name, service_price, service_description;
 ImageView serviceImage;
 CollapsingToolbarLayout collapsingToolbarLayout;
-FloatingActionButton btnCart;
+//FloatingActionButton btnCart;
 ElegantNumberButton numberButton;
 String serviceId="";
 FirebaseDatabase database;
 DatabaseReference services;
-
+    Service currentService;
 
 
     @Override
@@ -44,7 +49,21 @@ DatabaseReference services;
         //init view
 
         numberButton=(ElegantNumberButton)findViewById(R.id.numberButton);
-       // btnCart = (FloatingActionButton)findViewById(R.id.btnBron);
+     Button btnCart = (Button) findViewById(R.id.btnBron);
+        btnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Database(getBaseContext()).addToCart(new Order(
+                        serviceId,
+                        currentService.getName(), numberButton.getNumber(),
+                        currentService.getPrice(), currentService.getDiscount()
+
+                ));
+
+                Toast.makeText(ServiceDetail.this, "Добавлено в корзину", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         service_description=(TextView)findViewById(R.id.service_description);
         service_name=(TextView)findViewById(R.id.service_name);
         service_price=(TextView)findViewById(R.id.service_price);
@@ -75,16 +94,16 @@ DatabaseReference services;
         services.child(serviceId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Service service = dataSnapshot.getValue(Service.class);
+                currentService = dataSnapshot.getValue(Service.class);
 
                 //set image
-                Picasso.with(getBaseContext()).load(service.getImage()).into(serviceImage);
-                collapsingToolbarLayout.setTitle(service.getName());
+                Picasso.with(getBaseContext()).load(currentService.getImage()).into(serviceImage);
+                collapsingToolbarLayout.setTitle(currentService.getName());
 
-                service_price.setText(service.getPrice());
+                service_price.setText(currentService.getPrice());
 
-                service_name.setText(service.getName());
-                service_description.setText(service.getDescription());
+                service_name.setText(currentService.getName());
+                service_description.setText(currentService.getDescription());
 
             }
 

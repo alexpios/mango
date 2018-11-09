@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -73,24 +74,51 @@ CartAdapter adapter;
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(Cart.this);
         alertDialog.setTitle("Последний шаг!");
         alertDialog.setMessage("Введите желаемую дату посещения: ");
-        final EditText edtDate = new EditText(Cart.this);
+      //  final EditText edtDate = new EditText(Cart.this);
+
+        final DatePicker datePicker = new DatePicker(Cart.this);
+
+
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT
         );
-        edtDate.setLayoutParams(lp);
-        alertDialog.setView(edtDate);
-        alertDialog.setIcon(R.drawable.cart_shop);
+  //      edtDate.setLayoutParams(lp);
+
+        datePicker.setLayoutParams(lp);
+
+
+    //    alertDialog.setView(edtDate);
+
+        alertDialog.setView(datePicker);
+
+
+
+        alertDialog.setIcon(R.drawable.ic_date_add);
 
         alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+//                Request request = new Request(
+//                        Common.currentUser.getPhone(),
+//                        Common.currentUser.getName(), edtDate.getText().toString(),
+//                        txtTotalPrice.getText().toString(), cart
+//
+//                );
+
+String dateOfThis = ""+datePicker.getDayOfMonth()+"."+(datePicker.getMonth()+1)+"."+datePicker.getYear()+"";
                 Request request = new Request(
                         Common.currentUser.getPhone(),
-                        Common.currentUser.getName(), edtDate.getText().toString(),
+                        Common.currentUser.getName(), dateOfThis,
                         txtTotalPrice.getText().toString(), cart
 
                 );
+
+//                (new StringBuilder()
+//                        // Месяц отсчитывается с 0, поэтому добавляем 1
+//                        .append(mDatePicker.getDayOfMonth()).append(".")
+//                        .append(mDatePicker.getMonth() + 1).append(".")
+//                        .append(mDatePicker.getYear()));
 
                 //submit to firebase man. Usaem System.CurrentMilli to key
                 requests.child(String.valueOf(System.currentTimeMillis())).setValue(request);

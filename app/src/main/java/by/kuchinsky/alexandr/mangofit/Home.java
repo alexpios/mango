@@ -152,6 +152,15 @@ RecyclerView.LayoutManager layoutManager;
         {
 
         }
+        else if (id == R.id.status){
+           Intent status = new Intent(Home.this, OrderStatus.class);
+           startActivity(status);
+       }
+       else if (id == R.id.cart_menu){
+           Intent cart = new Intent(Home.this, Cart.class);
+           startActivity(cart);
+       }
+
         else if (id == R.id.nav_message)
         {
 
@@ -160,7 +169,9 @@ RecyclerView.LayoutManager layoutManager;
         }
         else if (id == R.id.nav_logOut)
         {
-
+            Intent signIn = new Intent(Home.this, SignIn.class);
+            signIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(signIn);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

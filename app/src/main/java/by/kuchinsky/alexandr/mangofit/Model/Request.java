@@ -7,6 +7,7 @@ public class Request {
     private String phone;
     private String name;
     private String address;
+    private String status;
     private String total;
     private List<Order> services;
 
@@ -19,6 +20,15 @@ public class Request {
         this.address = address;
         this.total = total;
         this.services = services;
+        this.status = "0"; //defoltniy status broni - 0, 0 - dobavlena zayavka. 1 - podtverjdeno menedjerom, 2 - otkloneno
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getPhone() {

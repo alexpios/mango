@@ -4,6 +4,19 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/cart_menu"
+            android:icon="@drawable/cart_shop"
+            android:iconTint="@android:color/white"
+            android:title="Корзина" />
+        <item
+            android:id="@+id/status"
+            android:icon="@drawable/ic_status"
+
+            android:iconTint="@android:color/white"
+            android:title="Статус заказа" />
+
         <item
             android:id="@+id/nav_raspisanie"
             android:icon="@drawable/ic_event_available_black_24dp"

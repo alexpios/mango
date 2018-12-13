@@ -39,6 +39,15 @@ public class OrderStatus extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recycler.setLayoutManager(layoutManager);
 
+
+        if (getIntent()==null)
+            loadOrders(Common.currentUser.getPhone());
+            else
+                loadOrders(getIntent().getStringExtra("userPhone"));
+
+
+
+
         loadOrders(Common.currentUser.getPhone());
 
     }
@@ -54,7 +63,7 @@ public class OrderStatus extends AppCompatActivity {
             @Override
             protected void populateViewHolder(OrderViewHolder viewHolder, Request model, int position) {
                 viewHolder.txtOrderId.setText("№"+adapter.getRef(position).getKey());
-                viewHolder.txtOrderStatus.setText(ConvertCodeToStatus(model.getStatus()));
+                viewHolder.txtOrderStatus.setText(Common.ConvertCodeToStatus(model.getStatus()));
                 viewHolder.txtOrderDate.setText("Желаемая дата: "+model.getAddress());
                 viewHolder.txtOrderPhone.setText(model.getPhone());
 
@@ -65,15 +74,5 @@ public class OrderStatus extends AppCompatActivity {
 recycler.setAdapter(adapter);
     }
 
-    private String ConvertCodeToStatus(String status) {
-            if (status.equals("0")){
-                return "Ожидает проверки";
-            }
-       else if (status.equals("1")){
-            return "Одобрено";
-        }
-        else
-            return "Отклонено";
 
-    }
 }

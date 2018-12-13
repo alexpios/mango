@@ -26,7 +26,9 @@ import com.squareup.picasso.Picasso;
 import by.kuchinsky.alexandr.mangofit.Common.Common;
 import by.kuchinsky.alexandr.mangofit.Interface.ItemClickListener;
 import by.kuchinsky.alexandr.mangofit.Model.Category;
+import by.kuchinsky.alexandr.mangofit.Service.ListenOrder;
 import by.kuchinsky.alexandr.mangofit.ViewHolder.MenuViewHolder;
+import io.paperdb.Paper;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -49,6 +51,7 @@ RecyclerView.LayoutManager layoutManager;
         //imma init firebase here.
         database= FirebaseDatabase.getInstance();
         category = database.getReference("Category");
+        Paper.init(this);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -81,9 +84,18 @@ RecyclerView.LayoutManager layoutManager;
         recycler_menu.setHasFixedSize(true);
         layoutManager= new LinearLayoutManager(this);
         recycler_menu.setLayoutManager(layoutManager);
-        
-        loadMenu();
 
+
+        if (Common.isConnectedToInternet(this))
+            loadMenu();
+        else{
+            Toast.makeText(this, "Проверьте Ваше интернет соединение!", Toast.LENGTH_SHORT).show();
+            return;}
+
+
+        //regestriruyu service
+        Intent service = new Intent(Home.this, ListenOrder.class);
+        startService(service);
     }
 
     private void loadMenu() {
@@ -132,7 +144,9 @@ RecyclerView.LayoutManager layoutManager;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
+     if(item.getItemId() == R.id.refresh){
+         loadMenu();
+     }
 
         return super.onOptionsItemSelected(item);
     }
@@ -148,10 +162,10 @@ RecyclerView.LayoutManager layoutManager;
 
         }
 
-        else if (id == R.id.nav_price)
-        {
-
-        }
+//        else if (id == R.id.nav_price)
+//        {
+//
+//        }
         else if (id == R.id.status){
            Intent status = new Intent(Home.this, OrderStatus.class);
            startActivity(status);
@@ -161,14 +175,16 @@ RecyclerView.LayoutManager layoutManager;
            startActivity(cart);
        }
 
-        else if (id == R.id.nav_message)
-        {
-
-
-
-        }
+//        else if (id == R.id.nav_message)
+//        {
+//
+//
+//
+//        }
         else if (id == R.id.nav_logOut)
         {
+
+            Paper.book().destroy();
             Intent signIn = new Intent(Home.this, SignIn.class);
             signIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(signIn);

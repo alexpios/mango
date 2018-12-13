@@ -14,6 +14,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+import by.kuchinsky.alexandr.mangofit.Common.Common;
 import by.kuchinsky.alexandr.mangofit.Model.User;
 
 public class SignUp extends AppCompatActivity {
@@ -35,6 +36,9 @@ public class SignUp extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (Common.isConnectedToInternet(getBaseContext())){
+
+
                 final ProgressDialog mDialog = new ProgressDialog(SignUp.this);
                 mDialog.setMessage("Пожалуйста подождите...");
                 mDialog.show();
@@ -61,6 +65,14 @@ public class SignUp extends AppCompatActivity {
                     }
                 });
             }
+            else
+                {
+                    Toast.makeText(SignUp.this, "Проверьте Ваше интернет соединение!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+        }
+
+
         });
     }
 }

@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import by.kuchinsky.alexandr.mangofit.Common.Common;
 import by.kuchinsky.alexandr.mangofit.Database.Database;
 import by.kuchinsky.alexandr.mangofit.Model.Order;
 import by.kuchinsky.alexandr.mangofit.Model.Service;
@@ -78,7 +79,12 @@ DatabaseReference services;
         if (getIntent() != null){
             serviceId = getIntent().getStringExtra("ServiceID");
             if (!serviceId.isEmpty()){
-                getDetailService(serviceId);
+                if (Common.isConnectedToInternet(getBaseContext())){
+                getDetailService(serviceId);}
+                else{
+                    Toast.makeText(ServiceDetail.this, "Проверьте Ваше интернет соединение!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
             }
         }
 

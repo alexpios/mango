@@ -22,6 +22,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import by.kuchinsky.alexandr.mangofit.Common.Common;
 import by.kuchinsky.alexandr.mangofit.Interface.ItemClickListener;
 import by.kuchinsky.alexandr.mangofit.Model.Service;
 import by.kuchinsky.alexandr.mangofit.ViewHolder.ServiceViewHolder;
@@ -64,7 +65,12 @@ if (getIntent()!=null){
     categoryId = getIntent().getStringExtra("CategoryID");
     if (!categoryId.isEmpty() && categoryId != null)
     {
-        loadListService(categoryId);
+        if (Common.isConnectedToInternet(getBaseContext())){
+        loadListService(categoryId);}
+        else{
+            Toast.makeText(ServiceList.this, "Проверьте Ваше интернет соединение!", Toast.LENGTH_SHORT).show();
+            return;
+        }
     }
 
     //search
@@ -131,7 +137,7 @@ if (getIntent()!=null){
                 Service.class,
                 R.layout.service_item,
                 ServiceViewHolder.class,
-                service_list.orderByChild("Name").equalTo(text.toString())
+                service_list.orderByChild("name").equalTo(text.toString())
 
         ) {
             @Override
@@ -162,7 +168,7 @@ if (getIntent()!=null){
 
     private void loadSuggest() {
 
-        service_list.orderByChild("MenuId").equalTo(categoryId)
+        service_list.orderByChild("menuId").equalTo(categoryId)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -185,7 +191,7 @@ if (getIntent()!=null){
     private void loadListService(String categoryId) {
 
         adapter = new FirebaseRecyclerAdapter<Service, ServiceViewHolder>(Service.class, R.layout.service_item, ServiceViewHolder.class,
-                service_list.orderByChild("MenuId").equalTo(categoryId)) {
+                service_list.orderByChild("menuId").equalTo(categoryId)) {
             @Override
             protected void populateViewHolder(ServiceViewHolder viewHolder, Service model, int position) {
                 viewHolder.service_name.setText(model.getName());

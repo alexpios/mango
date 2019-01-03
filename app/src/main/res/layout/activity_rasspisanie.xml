@@ -1,0 +1,857 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Rasspisanie"
+     >
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:padding="5dp"
+            android:src="@drawable/pon1" />
+
+
+
+    <TextView
+        android:layout_margin="10dp"
+        android:background="@color/overlayBackground"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold|italic"
+        android:padding="5dp"
+        android:textSize="15dp"
+        android:text="9:00"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:textSize="15dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:id="@+id/po1"
+        android:textAlignment="center"
+        android:text="Пилатес"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_margin="10dp"
+        android:background="@color/overlayBackground"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold|italic"
+        android:padding="5dp"
+        android:textSize="15dp"
+        android:text="9:15"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:textSize="15dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:id="@+id/po11"
+        android:text="Проект"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:layout_margin="10dp"
+            android:background="@color/overlayBackground"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold|italic"
+            android:padding="5dp"
+            android:textSize="15dp"
+            android:text="10:00"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="15dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:id="@+id/po111"
+            android:textAlignment="center"
+            android:text="Боди work / набор"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_margin="10dp"
+            android:background="@color/overlayBackground"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold|italic"
+            android:padding="5dp"
+            android:textSize="15dp"
+            android:text="17:00"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="15dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:text="Хип хоп 10+ новички"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:layout_margin="10dp"
+                android:background="@color/overlayBackground"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold|italic"
+                android:padding="5dp"
+                android:textSize="15dp"
+                android:text="18:00"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Джаз фанк"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Проект"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Стретчинг"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Хореография дети 4+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_margin="10dp"
+            android:background="@color/overlayBackground"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold|italic"
+            android:padding="5dp"
+            android:textSize="15dp"
+            android:text="19:00"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Body work"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Проект"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Йогалатес"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Хореография дети 4+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_margin="10dp"
+            android:background="@color/overlayBackground"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold|italic"
+            android:padding="5dp"
+            android:textSize="15dp"
+            android:text="20:00"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Хип хоп 8+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Проект"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Хип хоп новички"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Go go"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_margin="10dp"
+            android:background="@color/overlayBackground"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold|italic"
+            android:padding="5dp"
+            android:textSize="15dp"
+            android:text="21:00"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="15dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:text="Twerk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/vtornik"/>
+
+
+        <TextView
+            android:layout_margin="10dp"
+            android:background="@color/overlayBackground"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold|italic"
+            android:padding="5dp"
+            android:textSize="15dp"
+            android:text="16:30"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="15dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:text="Восточный танец 12 +"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_margin="10dp"
+            android:background="@color/overlayBackground"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold|italic"
+            android:padding="5dp"
+            android:textSize="15dp"
+            android:text="17:00"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="15dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:text="Хип хоп 11 +"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_margin="10dp"
+            android:background="@color/overlayBackground"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold|italic"
+            android:padding="5dp"
+            android:textSize="15dp"
+            android:text="17:30"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="15dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:text="Хатха йога"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_margin="10dp"
+            android:background="@color/overlayBackground"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold|italic"
+            android:padding="5dp"
+            android:textSize="15dp"
+            android:text="18:00"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Хатха йога 2й час"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Зумба"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Боди work"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Восток  дети 5+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        <TextView
+            android:layout_margin="10dp"
+            android:background="@color/overlayBackground"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold|italic"
+            android:padding="5dp"
+            android:textSize="15dp"
+            android:text="19:00"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="3dp"
+
+                android:text="Табата/интервал"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+
+                android:padding="3dp"
+                android:text="Восток взрослые"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="3dp"
+
+                android:text="Гимнастика 4+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+
+                android:padding="3dp"
+                android:text="Хип хоп 8+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:layout_margin="10dp"
+            android:background="@color/overlayBackground"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold|italic"
+            android:padding="5dp"
+            android:textSize="15dp"
+            android:text="20:00"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="5dp"
+
+                android:text="Джампинг фитнес"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="5dp"
+
+                android:text="Хип хоп взрослые"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="5dp"
+
+                android:text="Сальса"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="5dp"
+
+                android:text="Pole dance/Полотна"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        <TextView
+            android:layout_margin="10dp"
+            android:background="@color/overlayBackground"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold|italic"
+            android:padding="5dp"
+            android:textSize="15dp"
+            android:text="21:00"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="15dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:text="Сальса"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+
+
+
+
+
+
+
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="105dp"
+            android:padding="5dp"
+            android:src="@drawable/sreda" />
+
+
+
+        <TextView
+            android:layout_margin="10dp"
+            android:background="@color/overlayBackground"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold|italic"
+            android:padding="5dp"
+            android:textSize="15dp"
+            android:text="9:00"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="15dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:padding="10dp"
+
+            android:textAlignment="center"
+            android:text="Пилатес"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_margin="10dp"
+            android:background="@color/overlayBackground"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold|italic"
+            android:padding="5dp"
+            android:textSize="15dp"
+            android:text="9:15"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="15dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:padding="10dp"
+
+            android:text="Проект"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:layout_margin="10dp"
+            android:background="@color/overlayBackground"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold|italic"
+            android:padding="5dp"
+            android:textSize="15dp"
+            android:text="10:00"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="15dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:padding="10dp"
+
+            android:textAlignment="center"
+            android:text="Боди work / набор"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_margin="10dp"
+            android:background="@color/overlayBackground"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold|italic"
+            android:padding="5dp"
+            android:textSize="15dp"
+            android:text="17:00"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="15dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:text="Хип хоп 10+ новички"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:layout_margin="10dp"
+            android:background="@color/overlayBackground"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold|italic"
+            android:padding="5dp"
+            android:textSize="15dp"
+            android:text="18:00"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Джаз фанк"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Проект"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Стретчинг"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Хореография дети 4+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+
+
+
+        <TextView
+            android:layout_margin="10dp"
+            android:background="@color/overlayBackground"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold|italic"
+            android:padding="5dp"
+            android:textSize="15dp"
+            android:text="19:00"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Body work"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Проект"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Йогалатес"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Хореография дети 4+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_margin="10dp"
+            android:background="@color/overlayBackground"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold|italic"
+            android:padding="5dp"
+            android:textSize="15dp"
+            android:text="20:00"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Хип хоп 8+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Проект"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Хип хоп новички"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:padding="10dp"
+
+                android:text="Go go"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_margin="10dp"
+            android:background="@color/overlayBackground"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold|italic"
+            android:padding="5dp"
+            android:textSize="15dp"
+            android:text="21:00"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="15dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:text="Twerk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+</ScrollView>

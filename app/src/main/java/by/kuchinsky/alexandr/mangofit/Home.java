@@ -1,9 +1,12 @@
 package by.kuchinsky.alexandr.mangofit;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -15,6 +18,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +43,10 @@ TextView txtFullName;
 RecyclerView recycler_menu;
 RecyclerView.LayoutManager layoutManager;
     FirebaseRecyclerAdapter<Category, MenuViewHolder> adapter;
+
+    SwipeRefreshLayout swipeRefreshLayout;
+
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,10 +56,74 @@ RecyclerView.LayoutManager layoutManager;
         setSupportActionBar(toolbar);
 
 
+        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipe_lo);
+        swipeRefreshLayout.setColorSchemeColors(R.color.colorPrimary,
+                android.R.color.holo_purple,
+                android.R.color.holo_orange_dark,
+                android.R.color.holo_blue_dark
+                );
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                if (Common.isConnectedToInternet(getBaseContext()))
+                    loadMenu();
+                else{
+                    Toast.makeText(getBaseContext(), "Проверьте Ваше интернет соединение!", Toast.LENGTH_SHORT).show();
+                    return;}
+            }
+        });
+
+        swipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+
+                if (Common.isConnectedToInternet(getBaseContext()))
+                    loadMenu();
+                else{
+                    Toast.makeText(getBaseContext(), "Проверьте Ваше интернет соединение!", Toast.LENGTH_SHORT).show();
+                    return;}
+
+            }
+        });
 
         //imma init firebase here.
         database= FirebaseDatabase.getInstance();
         category = database.getReference("Category");
+
+
+
+
+        adapter = new FirebaseRecyclerAdapter<Category, MenuViewHolder>(Category.class, R.layout.menu_item,MenuViewHolder.class,category) {
+
+
+            @Override
+            protected void populateViewHolder(MenuViewHolder viewHolder, Category model, int position) {
+                viewHolder.txtMenuName.setText(model.getName());
+                Picasso.with(getBaseContext()).load(model.getImage()).into(viewHolder.imageView);
+                final Category clickItem = model;
+                viewHolder.setItemClickListener(new ItemClickListener() {
+                    @Override
+                    public void onClick(View view, int position, boolean isLongClick) {
+                        // Toast.makeText(Home.this, clickItem.getName().toString() + "Clicked", Toast.LENGTH_SHORT).show();
+                        // Get category id and send it to the next activity.
+
+                        Intent serviceList = new Intent(Home.this, ServiceList.class);
+
+                        //CategoryId u nas key => putim chisto key itema
+
+                        serviceList.putExtra("CategoryID", adapter.getRef(position).getKey());
+                        startActivity(serviceList);
+                    }
+                });
+            }
+        };
+
+
+
+
+
+
+
         Paper.init(this);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -81,16 +154,11 @@ RecyclerView.LayoutManager layoutManager;
 
         //Load menu
         recycler_menu=(RecyclerView)findViewById(R.id.recyclerMenu);
-        recycler_menu.setHasFixedSize(true);
-        layoutManager= new LinearLayoutManager(this);
-        recycler_menu.setLayoutManager(layoutManager);
-
-
-        if (Common.isConnectedToInternet(this))
-            loadMenu();
-        else{
-            Toast.makeText(this, "Проверьте Ваше интернет соединение!", Toast.LENGTH_SHORT).show();
-            return;}
+        //recycler_menu.setHasFixedSize(true);
+        recycler_menu.setLayoutManager(new GridLayoutManager(this, 2));
+        LayoutAnimationController controller = AnimationUtils.loadLayoutAnimation(recycler_menu.getContext(),
+                R.anim.layout_fall_down);
+        recycler_menu.setLayoutAnimation(controller);
 
 
         //regestriruyu service
@@ -99,29 +167,11 @@ RecyclerView.LayoutManager layoutManager;
     }
 
     private void loadMenu() {
-    adapter = new FirebaseRecyclerAdapter<Category, MenuViewHolder>(Category.class, R.layout.menu_item,MenuViewHolder.class,category) {
-            @Override
-            protected void populateViewHolder(MenuViewHolder viewHolder, Category model, int position) {
-                viewHolder.txtMenuName.setText(model.getName());
-                Picasso.with(getBaseContext()).load(model.getImage()).into(viewHolder.imageView);
-                final Category clickItem = model;
-                viewHolder.setItemClickListener(new ItemClickListener() {
-                    @Override
-                    public void onClick(View view, int position, boolean isLongClick) {
-                       // Toast.makeText(Home.this, clickItem.getName().toString() + "Clicked", Toast.LENGTH_SHORT).show();
-                        // Get category id and send it to the next activity.
 
-                        Intent serviceList = new Intent(Home.this, ServiceList.class);
-
-                        //CategoryId u nas key => putim chisto key itema
-
-                        serviceList.putExtra("CategoryID", adapter.getRef(position).getKey());
-                        startActivity(serviceList);
-                    }
-                });
-            }
-        };
-        recycler_menu.setAdapter(adapter);
+    recycler_menu.setAdapter(adapter);
+        swipeRefreshLayout.setRefreshing(false);
+        recycler_menu.getAdapter().notifyDataSetChanged();
+        recycler_menu.scheduleLayoutAnimation();
     }
 
 
@@ -159,7 +209,8 @@ RecyclerView.LayoutManager layoutManager;
 
        if (id == R.id.nav_raspisanie)
         {
-
+            Intent rasspisanie = new Intent(Home.this, Rasspisanie.class);
+            startActivity(rasspisanie);
         }
 
 //        else if (id == R.id.nav_price)

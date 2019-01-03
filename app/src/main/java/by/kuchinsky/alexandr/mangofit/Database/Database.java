@@ -71,6 +71,30 @@ return  result;
 
     }
 
+    public void addToFav(String serviceId){
+        SQLiteDatabase db = getReadableDatabase();
+        String query = String.format("INSERT INTO Favorites(ServiceId) VALUES('%s');", serviceId);
+        db.execSQL(query);
 
+    }
+
+    public void removeFromFav(String serviceId){
+        SQLiteDatabase db = getReadableDatabase();
+        String query = String.format("DELETE FROM Favorites WHERE ServiceId='%s';", serviceId);
+        db.execSQL(query);
+
+    }
+    public boolean isFav(String serviceId){
+        SQLiteDatabase db = getReadableDatabase();
+        String query = String.format("SELECT * FROM Favorites WHERE ServiceId='%s';", serviceId);
+       Cursor cursor = db.rawQuery(query,null);
+       if (cursor.getCount() <= 0){
+           cursor.close();
+           return false;
+       }
+       cursor.close();
+       return true;
+
+    }
 
 }

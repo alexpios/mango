@@ -1,6 +1,8 @@
 package by.kuchinsky.alexandr.mangofit;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import by.kuchinsky.alexandr.mangofit.Common.Common;
+import by.kuchinsky.alexandr.mangofit.Database.Database;
 import by.kuchinsky.alexandr.mangofit.Interface.ItemClickListener;
 import by.kuchinsky.alexandr.mangofit.Model.Service;
 import by.kuchinsky.alexandr.mangofit.ViewHolder.ServiceViewHolder;
@@ -35,14 +38,18 @@ DatabaseReference service_list;
 String categoryId="";
 FirebaseRecyclerAdapter<Service, ServiceViewHolder> adapter;
 
+SwipeRefreshLayout swipeRefreshLayout;
+
 //Search
 
     FirebaseRecyclerAdapter<Service, ServiceViewHolder> searchAdapter;
     List<String> suggestList = new ArrayList<>();
     MaterialSearchBar materialSearchBar;
 
+//favorites
+    Database localDB;
 
-
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +60,50 @@ FirebaseRecyclerAdapter<Service, ServiceViewHolder> adapter;
         database = FirebaseDatabase.getInstance();
         service_list= database.getReference("Service");
         //-------------------------------------------------///////
+
+        //local db
+        localDB = new Database(this);
+
+
+        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipe_layout);
+        swipeRefreshLayout.setColorSchemeColors(R.color.colorPrimary,
+                android.R.color.holo_purple,
+                android.R.color.holo_orange_dark,
+                android.R.color.holo_blue_dark
+        );
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                if (getIntent()!=null){
+                    categoryId = getIntent().getStringExtra("CategoryID");
+                    if (!categoryId.isEmpty() && categoryId != null)
+                    {
+                        if (Common.isConnectedToInternet(getBaseContext())){
+                            loadListService(categoryId);}
+                        else{
+                            Toast.makeText(ServiceList.this, "Проверьте Ваше интернет соединение!", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }}
+            }
+        });
+        swipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                if (getIntent()!=null){
+                    categoryId = getIntent().getStringExtra("CategoryID");
+                    if (!categoryId.isEmpty() && categoryId != null)
+                    {
+                        if (Common.isConnectedToInternet(getBaseContext())){
+                            loadListService(categoryId);}
+                        else{
+                            Toast.makeText(ServiceList.this, "Проверьте Ваше интернет соединение!", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }}
+            }
+        });
+
 
         recyclerView = (RecyclerView)findViewById(R.id.recycler_service);
         recyclerView.setHasFixedSize(true);
@@ -193,9 +244,34 @@ if (getIntent()!=null){
         adapter = new FirebaseRecyclerAdapter<Service, ServiceViewHolder>(Service.class, R.layout.service_item, ServiceViewHolder.class,
                 service_list.orderByChild("menuId").equalTo(categoryId)) {
             @Override
-            protected void populateViewHolder(ServiceViewHolder viewHolder, Service model, int position) {
+            protected void populateViewHolder(final ServiceViewHolder viewHolder, final Service model, final int position) {
                 viewHolder.service_name.setText(model.getName());
+                viewHolder.service_price.setText(model.getPrice().toString()+" BYN");
+
                 Picasso.with(getBaseContext()).load(model.getImage()).into(viewHolder.service_image);
+
+                //add favorite for any service of fitness club
+                if(localDB.isFav(adapter.getRef(position).getKey()))
+                    viewHolder.fav_image.setImageResource(R.drawable.ic_favorite_black);
+
+                //click heart
+                viewHolder.fav_image.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (!localDB.isFav(adapter.getRef(position).getKey())){
+                            localDB.addToFav(adapter.getRef(position).getKey());
+                            viewHolder.fav_image.setImageResource(R.drawable.ic_favorite_black);
+                            Toast.makeText(ServiceList.this, model.getName()+" добавлен в избранное!", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            localDB.removeFromFav(  adapter.getRef(position).getKey());
+                            viewHolder.fav_image.setImageResource(R.drawable.ic_favorite_black);
+                            Toast.makeText(ServiceList.this, model.getName()+" удален из избранного!", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
+
 
                 final Service local = model;
                     viewHolder.setItemClickListener(new ItemClickListener() {
@@ -214,5 +290,6 @@ if (getIntent()!=null){
         //adapter set
 
         recyclerView.setAdapter(adapter);
+        swipeRefreshLayout.setRefreshing(false);
     }
 }

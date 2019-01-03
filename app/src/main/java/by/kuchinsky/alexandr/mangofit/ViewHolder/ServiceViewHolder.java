@@ -9,8 +9,8 @@ import by.kuchinsky.alexandr.mangofit.Interface.ItemClickListener;
 import by.kuchinsky.alexandr.mangofit.R;
 
 public class ServiceViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    public TextView service_name;
-    public ImageView service_image;
+    public TextView service_name, service_price;
+    public ImageView service_image, fav_image;
     private ItemClickListener itemClickListener;
 
     public ServiceViewHolder(View itemView) {
@@ -18,8 +18,9 @@ public class ServiceViewHolder extends RecyclerView.ViewHolder implements View.O
 
 
         service_name = (TextView)itemView.findViewById(R.id.service_name);
+        service_price = (TextView)itemView.findViewById(R.id.service_price);
         service_image=(ImageView)itemView.findViewById(R.id.service_image);
-
+        fav_image=(ImageView)itemView.findViewById(R.id.fav);
         itemView.setOnClickListener(this);
     }
 
